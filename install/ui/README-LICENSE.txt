@@ -18,12 +18,6 @@ http://jquery.org/license/
 JSON 2 - public domain
  * json2.js
 
-QUnit - dual licensed under MIT and GPLv2 licenses
- * test/qunit.css
- * test/qunit.js
-    * jsDump licensed under BSD 2 license
-    * Javascript Diff Algorithm licensed under MIT license
-
 Font Awesome - code licensed under MIT license
  * less/font-awesome
 

@@ -54,8 +54,6 @@ OPTIONS
                 files from ui/images
     --css
                 files from ui/css
-    --data
-                files from ui/test/data
     --migration
                 files from migration/
     --config
@@ -127,10 +125,6 @@ do
         --css)
             shift
             CSS=1
-            ;;
-        --data)
-            shift
-            DATA=1
             ;;
         --migration)
             shift
@@ -313,13 +307,6 @@ pushd $DIR/../../ #freeipa/install
         TARGET=$TARGET_BASE/ui/css
         RECURSIVE=0
         EXCEPTIONS="--exclude /Makefile*"
-        sync-files
-    fi
-
-    if [[ $DATA ]] ; then
-        SOURCE=ui/test/data/*
-        TARGET=$TARGET_BASE/ui/test/data
-        RECURSIVE=1
         sync-files
     fi
 

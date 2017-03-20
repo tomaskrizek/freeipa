@@ -130,7 +130,6 @@ var IPA = function () {
         // if current path matches live server path, use live data
         if (that.url && window.location.pathname.substring(0, that.url.length) === that.url) {
             that.json_url = params.url || '/ipa/session/json';
-
         } else { // otherwise use fixtures
             that.json_path = params.url || "test/data";
         }

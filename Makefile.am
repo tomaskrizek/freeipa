@@ -226,11 +226,11 @@ pylint: $(top_builddir)/ipapython/version.py ipasetup.py
 		$${FILES}
 endif  # WITH_PYLINT
 
-.PHONY: jslint jslint-ui jslint-ui-test jslint-html \
+.PHONY: jslint jslint-ui jslint-html \
 	$(top_builddir)/install/ui/src/libs/loader.js
 
 if WITH_JSLINT
-jslint: jslint-ui jslint-ui-test jslint-html
+jslint: jslint-ui jslint-html
 
 $(top_builddir)/install/ui/src/libs/loader.js:
 	(cd $(top_builddir)/install/ui/src/libs && make loader.js)
@@ -244,10 +244,6 @@ jslint-ui: $(top_builddir)/install/ui/src/libs/loader.js
 	jsl -nologo -nosummary -nofilelisting -conf jsl.conf;	\
 	rm js/libs;						\
 	rmdir js
-
-jslint-ui-test:
-	cd $(top_srcdir)/install/ui/test;			\
-	jsl -nologo -nosummary -nofilelisting -conf jsl.conf
 
 jslint-html:
 	cd $(top_srcdir)/install/html; 				\
