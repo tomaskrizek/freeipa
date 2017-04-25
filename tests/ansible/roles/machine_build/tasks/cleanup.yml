@@ -1,0 +1,5 @@
+---
+- name: "remove git repository"
+  file:
+    path: freeipa
+    state: absent

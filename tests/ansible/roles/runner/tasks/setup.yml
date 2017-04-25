@@ -1,0 +1,9 @@
+---
+- name: "install packages for vagrant"
+  dnf:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - vagrant
+    - vagrant-libvirt
+

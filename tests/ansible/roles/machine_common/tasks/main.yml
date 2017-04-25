@@ -1,0 +1,4 @@
+---
+- include: setup.yml
+  when: "{{ prepare_image }}"
+

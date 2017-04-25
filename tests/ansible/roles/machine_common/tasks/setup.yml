@@ -1,0 +1,27 @@
+---
+- name: "set selinux mode"
+  selinux:
+    state: "{{ selinux_mode }}"
+
+- name: "enable FreeIPA COPR repo"
+  shell: "dnf copr enable {{ copr_repo }}"
+
+- name: "disable updates-testing repository"
+  shell: dnf config-manager --set-disabled updates-testing
+
+- name: "update distro packages"
+  dnf:
+    name: "*"
+    state: latest
+
+- name: "install haveged"
+  dnf:
+    name: haveged
+    state: present
+
+- name: "start&enable haveged for RNG noise"
+  service:
+    name: haveged
+    enables: yes
+    state: started
+

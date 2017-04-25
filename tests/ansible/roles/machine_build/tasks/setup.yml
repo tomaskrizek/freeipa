@@ -1,0 +1,6 @@
+---
+- name: "install git"
+  dnf:
+    name: git
+    state: present
+

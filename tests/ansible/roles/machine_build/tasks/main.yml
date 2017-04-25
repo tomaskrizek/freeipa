@@ -1,0 +1,14 @@
+---
+- include: setup.yml
+  when: "{{ prepare_image }}"
+
+- name: "clone FreeIPA git repo"
+  shell: "git clone --depth 1 {{ git_repo }} -b {{ git_branch }}" 
+
+- name: "install FreeIPA build deps"
+  shell: "dnf builddep -y -D 'with_lint 1' --spec freeipa.spec.in"
+  chdir: freeipa
+
+- include: cleanup.yml
+  when: "{{ prepare_image }}"
+
