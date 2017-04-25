@@ -1,8 +1,0 @@
----
-hosts: image_prepare
-name: "create box template"
-roles:
-  - image_common
-  - role: machine_common
-    prepare_image: true
-  - 

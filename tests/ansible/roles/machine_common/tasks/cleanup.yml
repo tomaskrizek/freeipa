@@ -1,0 +1,14 @@
+---
+# TODO clean up, shrink image etc.
+- name: "clear bash history"
+  shell: cat /dev/null > ~/.bash_history && history -c
+
+- name: "clean dnf cache to save space"
+  shell: dnf -y --enablerepo='*' clean all
+
+- name: "remove temporary files"
+  file:
+    path: "/tmp/{{ item }}"
+    state: absent
+  with_fileglob:
+    - /tmp/*

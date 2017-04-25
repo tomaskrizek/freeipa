@@ -2,9 +2,10 @@
 - name: "set selinux mode"
   selinux:
     state: "{{ selinux_mode }}"
+    policy: targeted
 
 - name: "enable FreeIPA COPR repo"
-  shell: "dnf copr enable {{ copr_repo }}"
+  shell: "dnf copr enable -y {{ copr_repo }}"
 
 - name: "disable updates-testing repository"
   shell: dnf config-manager --set-disabled updates-testing
@@ -22,6 +23,6 @@
 - name: "start&enable haveged for RNG noise"
   service:
     name: haveged
-    enables: yes
+    enabled: yes
     state: started
 

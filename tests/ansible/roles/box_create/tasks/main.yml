@@ -1,33 +1,11 @@
 ---
-- name: "create folder for image"
-  file:
-    path: /tmp/image
-    state: directory
-    mode: 0755
-
-- name: "copy Vagrant template file"
-  template:
-    src: ../templates/Vagantfile.j2
-    dest: /tmp/image/Vagrantfile
-    mode: 0644
-
-- name: "bring the image online"
-  shell: vagrant up
-  chdir: /tmp/image
-
-- name: "wait for image to come online"
-  local_action: wait_for host="{{ template_ip }}" port=22 delay=10 timeout=120
-
-- hosts: image_box
-  roles:
-    - machine_common
-    - machine_clean
-
 - name: "create vagrant box"
-  shell: vagrant package --output /vagrant/ipa-master-f25.box
-  chdir: /tmp/image
+  shell: vagrant package --output ipa-master-f25.box
+  args:
+    chdir: /tmp/image
 
 - name: "destroy template VM"
   shell: vagrant destroy
-  chdir: /tmp/image
+  args:
+    chdir: /tmp/image
 

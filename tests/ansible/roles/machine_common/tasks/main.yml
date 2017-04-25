@@ -2,3 +2,8 @@
 - include: setup.yml
   when: "{{ prepare_image }}"
 
+- include: cleanup.yml
+  when: "{{ prepare_image }}"
+
+- include: shrink.yml
+  when: "{{ prepare_image }}"

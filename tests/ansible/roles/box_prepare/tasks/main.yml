@@ -1,0 +1,41 @@
+---
+- include: cleanup.yml
+  tags: cleanup
+
+- name: "create folder for image"
+  file:
+    path: /tmp/image
+    state: directory
+    mode: 0755
+
+- name: "copy Vagrant template file"
+  template:
+    src: Vagrantfile.j2
+    dest: /tmp/image/Vagrantfile
+    mode: 0644
+
+- name: "bring the image online"
+  shell: vagrant up
+  args:
+    chdir: /tmp/image
+
+- name: "wait for image to come online"
+  local_action: wait_for host="{{ template_ip }}" port=22 timeout=120
+
+- name: "make sure .ssh directory exists"
+  file:
+    dest: "{{ key_file | dirname }}"
+    mode: 0700
+    owner: root
+    state: directory
+  delegate_to: "{{ template_ip }}"
+  when: false
+
+- name: "install ssh key"
+  copy:
+    content: "{{ ssh_key }}"
+    dest: "{{ key_file }}"
+    mode: 0600
+    owner: root
+  delegate_to: "{{ template_ip }}"
+  when: false
