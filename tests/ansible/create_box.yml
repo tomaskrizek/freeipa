@@ -7,8 +7,6 @@
 # HACK: workaround to install Python2 that is still required by Ansible
 - hosts: image_box
   gather_facts: false
-  become_user: root
-  become: yes
   tasks:
     - name: install python and deps for ansible modules
       raw: test -e /usr/bin/python || dnf install -y python2 python2-dnf libselinux-python

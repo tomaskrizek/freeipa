@@ -9,12 +9,17 @@
   with_fileglob:
     - /tmp/*
 
+# This either hangs up on VM or crashes the host
 - name: "zero out empty area to save space when compressed"
   shell: dd if=/dev/zero of=/EMPTY bs=1M
-  when: false  # hangs in fedora
+  tags:
+    - shrink_image
+  when: false
 
 - name: "remove the zeroed file"
   file:
     path: /EMPTY
     state: absent
+  tags:
+    - shrink_image
   when: false

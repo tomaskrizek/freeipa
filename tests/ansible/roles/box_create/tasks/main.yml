@@ -1,8 +1,22 @@
 ---
+- name: "remove any artifcats from previous packaging"
+  become_user: root
+  become: yes
+  file:
+    path: /tmp/image/_tmp_package
+    state: absent
+  tags:
+    - package_box
+
 - name: "create vagrant box"
+  # FIXME? needs root priviledges to access libvirt storage pool
+  become_user: root
+  become: yes
   shell: vagrant package --output ipa-master-f25.box
   args:
     chdir: /tmp/image
+  tags:
+    - package_box
 
 - name: "destroy template VM"
   shell: vagrant destroy
