@@ -1,1 +1,3 @@
 *.retry
+ansible/vault-password
+ansible/id_rsa
