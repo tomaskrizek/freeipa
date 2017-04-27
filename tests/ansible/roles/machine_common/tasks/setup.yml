@@ -15,6 +15,7 @@
     name: "*"
     state: latest
 
+# TODO remove
 - name: "install haveged"
   dnf:
     name: haveged
@@ -25,4 +26,21 @@
     name: haveged
     enabled: yes
     state: started
+
+- name: "set authorized keys for root"
+  authorized_key:
+    user: root
+    state: present
+    key: '{{ item }}'
+  with_file:
+    - keys/freeipa_pr_ci.pub
+
+- name: "set authorized keys for vagrant"
+  authorized_key:
+    user: vagrant
+    state: present
+    key: '{{ item }}'
+  with_file:
+    - keys/freeipa_pr_ci.pub
+    - keys/vagrant.pub
 

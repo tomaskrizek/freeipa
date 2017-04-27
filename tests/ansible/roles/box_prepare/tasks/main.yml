@@ -22,20 +22,3 @@
 - name: "wait for image to come online"
   local_action: wait_for host="{{ template_ip }}" port=22 timeout=120
 
-- name: "make sure .ssh directory exists"
-  file:
-    dest: "{{ key_file | dirname }}"
-    mode: 0700
-    owner: root
-    state: directory
-  delegate_to: "{{ template_ip }}"
-  when: false
-
-- name: "install ssh key"
-  copy:
-    content: "{{ ssh_key }}"
-    dest: "{{ key_file }}"
-    mode: 0600
-    owner: root
-  delegate_to: "{{ template_ip }}"
-  when: false

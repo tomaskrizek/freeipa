@@ -1,14 +1,4 @@
 ---
-- name: "clean dnf cache to save space"
-  shell: dnf -y --enablerepo='*' clean all
-
-- name: "remove temporary files"
-  file:
-    path: "/tmp/{{ item }}"
-    state: absent
-  with_fileglob:
-    - /tmp/*
-
 # This either hangs up on VM or crashes the host
 - name: "zero out empty area to save space when compressed"
   shell: dd if=/dev/zero of=/EMPTY bs=1M
