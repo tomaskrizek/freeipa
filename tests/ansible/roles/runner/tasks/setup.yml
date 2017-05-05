@@ -1,5 +1,5 @@
 ---
-- name: "install packages for vagrant and ansible"
+- name: "install runner dependencies"
   dnf:
     name: "{{ item }}"
     state: present
@@ -8,4 +8,5 @@
     - vagrant-libvirt
     - libguestfs-tools-c  # required for vagrant package
     - ansible
+    - nfs-utils
 

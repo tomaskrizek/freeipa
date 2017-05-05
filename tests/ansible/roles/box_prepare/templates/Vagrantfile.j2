@@ -13,12 +13,9 @@ Vagrant.configure(2) do |config|
         template.vm.provider "libvirt" do |domain,override|
             domain.memory = 2048
 	    #domain.cpu_mode = "host-passthrough"
-            override.vm.network "private_network",
-                                ip: "{{ template_ip }}"
-
+            override.vm.network "private_network", type: "dhcp"
         end
 
-        #master.vm.provision "shell", inline: <<-SHELL
     end
 end
 

@@ -8,6 +8,9 @@
 - include: setup.yml
   when: prepare_image
 
+- include: install_dependencies.yml
+  when: prepare_image
+
 - include: cleanup.yml
   when: prepare_image
 

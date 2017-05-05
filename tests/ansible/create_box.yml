@@ -18,8 +18,6 @@
   roles:
     - role: machine_common
       prepare_image: true
-    - role: machine_clean
-      prepare_image: true
 
 - hosts: runner
   name: "create image box"

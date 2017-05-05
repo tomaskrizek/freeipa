@@ -2,8 +2,10 @@
 - name: "clean dnf cache to save space"
   shell: dnf -y --enablerepo='*' clean all
 
-- name: "clear bash history"
-  shell: cat /dev/null > ~/.bash_history && history -c
+- name: "remove eth1 interface with template IP"
+  file:
+    path: "/etc/sysconfig/network-scripts/ifcfg-eth1"
+    state: absent
 
 # TODO not necessary for fedora
 # FIXME: this globals files from localhost, not remote machine
@@ -14,3 +16,7 @@
   with_fileglob:
     - /tmp/*
   when: false
+
+- name: "clear bash history"
+  shell: cat /dev/null > ~/.bash_history && history -c
+
