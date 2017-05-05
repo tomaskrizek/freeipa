@@ -16,8 +16,7 @@
 - hosts: image_box
   name: "modify vagrant box template"
   roles:
-    - role: machine_common
-      prepare_image: true
+    - role: machine_template
 
 - hosts: runner
   name: "create image box"

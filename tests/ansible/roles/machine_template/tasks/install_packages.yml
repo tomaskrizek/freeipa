@@ -1,4 +1,9 @@
 ---
+- name: "update distro packages"
+  dnf:
+    name: "*"
+    state: latest
+
 - name: "install freeipa rpms with dependencies"
   shell: "dnf install -y /vagrant/rpms/*.rpm"
 
