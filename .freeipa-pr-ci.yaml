@@ -10,7 +10,7 @@ jobs:
         template: &ci-master-f25
           name: freeipa/ci-ipa-4-5-f25
           version: 0.1.1
-        timeout: 1800
+        timeout: 3000
 
   fedora-25/simple_replication:
     requires: [fedora-25/build]
