@@ -336,6 +336,8 @@ def install_check(installer):
             "Please uninstall it before configuring the IPA server, "
             "using 'ipa-client-install --uninstall'")
 
+    raise ScriptError("Testing PR CI ipa-server-install failure")
+
     fstore = sysrestore.FileStore(SYSRESTORE_DIR_PATH)
     sstore = sysrestore.StateFile(SYSRESTORE_DIR_PATH)
 
