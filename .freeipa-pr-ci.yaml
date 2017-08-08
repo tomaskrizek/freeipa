@@ -10,9 +10,20 @@ jobs:
         template: &ci-master-f25
           name: freeipa/ci-master-f25
           version: 0.2.11
-        timeout: 3000
+        timeout: 1800
 
   fedora-25/simple_replication:
+    requires: [fedora-25/build]
+    priority: 50
+    job:
+      class: RunPytest
+      args:
+        build_url: '{fedora-25/build_url}'
+        test_suite: test_integration/test_simple_replication.py
+        template: *ci-master-f25
+        timeout: 3600
+
+  fedora-25/simple_replication2:
     requires: [fedora-25/build]
     priority: 50
     job:
