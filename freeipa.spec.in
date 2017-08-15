@@ -187,6 +187,7 @@ BuildRequires:  python-qrcode-core >= 5.0.0
 BuildRequires:  python2-dns >= 1.15
 BuildRequires:  jsl
 BuildRequires:  python2-yubico
+BuildRequires:  python3-mod_wsgi
 # pki Python package
 BuildRequires:  pki-base-python2
 BuildRequires:  python-pytest-multihost
@@ -291,6 +292,7 @@ Requires: krb5-pkinit-openssl >= %{krb5_version}
 Requires: cyrus-sasl-gssapi%{?_isa}
 Requires: ntp
 Requires: httpd >= 2.4.6-31
+Requires: python3-mod_wsgi
 Requires: mod_wsgi
 Requires: mod_auth_gssapi >= 1.5.0
 # 1.0.14-3: https://bugzilla.redhat.com/show_bug.cgi?id=1431206
