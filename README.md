@@ -17,11 +17,13 @@ cross-realm Kerberos trust or user synchronization.
 FreeIPA:
 
 * Allows all your users to access all the machines with the same credentials
+
   and security settings
 * Allows users to access personal files transparently from any machine in
   an authenticated and secure way
 * Uses an advanced grouping mechanism to restrict network access to services
   and files only to specific users
+
 * Allows central management of security mechanisms like passwords,
   SSH Public Keys, SUDO rules, Keytabs, Access Control Rules
 * Enables delegation of selected administrative tasks to other power users
@@ -35,6 +37,7 @@ tools for the following components:
 * LDAP Server - based on the [389 project](http://www.port389.org/)
 * KDC - based on [MIT Kerberos](http://k5wiki.kerberos.org/wiki/Main_Page)
   implementation
+
 * PKI based on [Dogtag project](http://pki.fedoraproject.org/wiki/PKI_Main_Page)
 * [Samba](http://www.samba.org/) libraries for Active Directory integration
 * DNS Server based on [BIND](https://www.isc.org/software/bind) and the
